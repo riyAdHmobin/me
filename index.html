@@ -16,29 +16,15 @@
     <!-- Page Navbar -->
     <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
         <div class="container">
-            <a class="logo" href="#">Meyawo</a>         
+            <a class="logo" id="brand" href="#">Meyawo</a>         
             <ul class="nav">
-                <li class="item">
-                    <a class="link" href="#home">Home</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#about">About</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#portfolio">Portfolio</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#testmonial">Testmonial</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#blog">Blog</a>
-                </li>
-                <li class="item">
-                    <a class="link" href="#contact">Contact</a>
-                </li>
-                <li class="item ml-md-3">
-                    <a href="components.html" class="btn btn-primary">Components</a>
-                </li>
+                <li class="item"><a class="link" href="#home">Home</a></li>
+                <li class="item"><a class="link" href="#about">About</a></li>
+                <li class="item"><a class="link" href="#portfolio">Portfolio</a></li>
+                <li class="item"><a class="link" href="#testmonial">Testimonial</a></li>
+                <li class="item"><a class="link" href="#blog">Blog</a></li>
+                <li class="item"><a class="link" href="#contact">Contact</a></li>
+                <li class="item ml-md-3"><a href="components.html" class="btn btn-primary">Components</a></li>
             </ul>
             <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
                 <div class="hamburger-box">
@@ -46,21 +32,21 @@
                 </div>
             </a>
         </div>          
-    </nav><!-- End of Page Navbar -->
+    </nav>
 
-    <!-- page header -->
+    <!-- Page Header -->
     <header id="home" class="header">
         <div class="overlay"></div>
         <div class="header-content container">
             <h1 class="header-title">
                 <span class="up">HI!</span>
-                <span class="down">I am John Doe</span>
+                <span class="down" id="name">I am John Doe</span>
             </h1>
-            <p class="header-subtitle">FRONTEND WEB DESIGNER</p>            
-
+            <p class="header-subtitle" id="designation">FRONTEND WEB DESIGNER</p>            
             <button class="btn btn-primary">Visit My Works</button>
-        </div>              
-    </header><!-- end of page header -->
+        </div>
+    </header>
+    <!-- end of page header -->
 
     <!-- about section -->
     <section class="section pt-0" id="about">
@@ -74,15 +60,37 @@
                 <div class="about-caption">
                     <p class="section-subtitle">Who Am I ?</p>
                     <h2 class="section-title mb-3">About Me</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aliquid ad provident aut fuga animi soluta quae eos non cupiditate voluptates dolorem, doloremque quos dicta quibusdam impedit iure nemo a iste 
-                        <br>culpa! Quasi quibusdam hic recusandae delectus velit officiis explicabo voluptatibus! Nemo esse similique, voluptates labore distinctio, placeat explicabo facilis molestias, blanditiis culpa iusto voluptatem ratione eligendi a, quia temporibus velit vero ipsa sint ex voluptatum expedita aliquid! Debitis, nam!              
+                    <!-- Add an ID to the paragraph where the text will be inserted -->
+                    <p id="about-text">
+                        <!-- Placeholder text that will be replaced -->
                     </p>
                     <button class="btn-rounded btn btn-outline-primary mt-4">Download CV</button>
                 </div>              
             </div><!-- end of about wrapper -->
         </div><!-- end of container -->
-    </section> <!-- end of about section -->
+    </section>
+
+    <script>
+        // Navbar Variables
+        var brandName = "JohnDoe";
+        var name = "John Doe";
+        var designation = "Backend Developer"; // Change this to your desired designation
+        var aboutText = "This is a test text block. This is a test text block. This is a test text block. This is a test text block. This is a test text block. This is a test text block. This is a test text block. This is a test text block.";
+        
+        document.getElementById("brand").textContent = brandName;
+
+        // Header Variables
+        
+        document.getElementById("name").textContent = "I am " + name;
+        document.getElementById("designation").textContent = designation;
+
+        // Define the long text as a variable
+        
+
+        // Insert the text into the HTML element with the specified ID
+        document.getElementById("about-text").innerHTML = aboutText;
+    </script>
+    <!-- end of about section -->
 
     <!-- service section -->
     <section class="section" id="service">
