@@ -1,1 +1,156 @@
-<h2>Fresh</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Riyadh Mobin Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2c001e; /* Ubuntu-like purple tint */
+            font-family: 'Ubuntu Mono', monospace;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terminal-window {
+            background-color: #300a24;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            height: 500px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #1a1a1a;
+            padding: 8px 12px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-red { background: #ff5f56; }
+        .btn-yellow { background: #ffbd2e; }
+        .btn-green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 16px;
+            color: #33ff33;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .line::before {
+            content: '➜ ';
+            color: #66ff66;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-line::before {
+            content: '➜ ';
+            margin-right: 5px;
+            color: #66ff66;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00ffff; /* Cyan */
+            font-family: inherit;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="terminal-window">
+    <div class="terminal-header">
+        <div class="terminal-btn btn-red"></div>
+        <div class="terminal-btn btn-yellow"></div>
+        <div class="terminal-btn btn-green"></div>
+    </div>
+    <div class="terminal-body" id="terminal">
+        <div>Welcome to Riyadh's Ubuntu terminal portfolio. Type <b>help</b> to begin.</div>
+        <div class="input-line"><input type="text" id="input" autofocus autocomplete="off" /></div>
+    </div>
+</div>
+
+<script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('input');
+
+    const commands = {
+        help: `Available commands:
+- about
+- skills
+- experience
+- contact
+- clear`,
+        about: `I'm Riyadh, a passionate full-stack developer focused on Laravel, Vue, and modern web development.`,
+        skills: `- PHP, Laravel\n- JavaScript, Vue.js\n- HTML, CSS, Tailwind\n- MySQL, REST APIs\n- Git, Docker`,
+        experience: `- Full Stack Developer @ DevHub (2022–Present)\n- Intern @ CodeWorks (2021)\n- Freelance Projects (since 2020)`,
+        contact: `Email: riyadh@example.com\nGitHub: github.com/riyadhdev\nLinkedIn: linkedin.com/in/riyadhdev`,
+        clear: ''
+    };
+
+    input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+            const command = input.value.trim().toLowerCase();
+            const commandLine = document.createElement('div');
+            commandLine.classList.add('line');
+            commandLine.textContent = command;
+            terminal.insertBefore(commandLine, input.parentElement);
+
+            if (command === 'clear') {
+                terminal.innerHTML = '';
+                const inputWrap = document.createElement('div');
+                inputWrap.classList.add('input-line');
+                inputWrap.innerHTML = '<input type="text" id="input" autofocus autocomplete="off" />';
+                terminal.appendChild(inputWrap);
+                document.getElementById('input').focus();
+            } else {
+                const response = document.createElement('div');
+                response.innerHTML = (commands[command] || `'${command}' is not recognized. Type 'help' for a list of commands.`)
+                    .replace(/\n/g, '<br/>');
+                terminal.insertBefore(response, input.parentElement);
+            }
+
+            input.value = '';
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+    });
+</script>
+</body>
+</html>
